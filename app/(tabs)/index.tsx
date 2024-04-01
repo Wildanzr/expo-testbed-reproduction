@@ -1,14 +1,36 @@
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import { StyleSheet, Image, Button } from 'react-native';
+import { Text, View} from '@/components/Themed';
+import * as FileSystem from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
 
 export default function TabOneScreen() {
+  const openShareDialogAsync = async () => {
+    // Download the image to share
+    const { uri } = await FileSystem.downloadAsync(
+      'https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg',
+      FileSystem.documentDirectory + 'small.jpg'
+    );
+    console.log('Finished downloading to ', uri);
+
+    try {
+      console.log('Finished downloading to ', uri);
+      await Sharing.shareAsync(uri, {
+        dialogTitle: "Share this awesome photo",
+        mimeType: 'image/jpeg',
+        UTI: 'public.jpeg'
+      })
+    } catch (e) {
+      console.error('Error', e);
+    }
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Image source={{ uri: "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"}} style={{ width: 400, height: 400}} />
+      <Button 
+        title='Share'
+        onPress={openShareDialogAsync}
+      />
     </View>
   );
 }
