@@ -18,88 +18,401 @@ export default function TabOneScreen() {
 
   return (
     <SafeAreaView className="flex-1 w-full h-full py-5">
-      {Platform.OS === "ios" ? (
-        <KeyboardAwareScrollView
-          ref={scrollRef}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingVertical: 50 }}
-          keyboardShouldPersistTaps="handled"
+      <KeyboardAwareScrollView
+        ref={scrollRef}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingVertical: 50 }}
+        keyboardShouldPersistTaps="handled"
+      >
+        {/* REPLACE THIS CONTENT FOR IOS */}
+        <HeaderNavigation title="Edit Journal" color="white" />
+        <View
+          style={{
+            marginTop: Platform.select({ ios: 14, android: 30 }),
+            paddingHorizontal: 15,
+            width: "100%",
+          }}
         >
-          {/* REPLACE THIS CONTENT FOR IOS */}
-          <HeaderNavigation title="Edit Journal" color="white" />
-          <View style={{ marginTop: 14, paddingHorizontal: 15, width: "100%" }}>
-            <View className="mt-5 rounded-xl  bg-white">
-              <TextInput
-                inputMode="text"
-                className="p-4 text-lg"
-                returnKeyType="next"
-                multiline
-                value={title}
-                onChangeText={(value) => {
-                  setTitle(value);
-                }}
-              />
-            </View>
-
-            <View className="mt-5 rounded-xl bg-white">
-              <TextInput
-                inputMode="text"
-                className="p-4"
-                returnKeyType="done"
-                numberOfLines={8}
-                textAlignVertical="top"
-                multiline
-                value={content}
-                onChangeText={(value) => {
-                  setContent(value);
-                }}
-              />
-            </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
           </View>
-        </KeyboardAwareScrollView>
-      ) : (
-        <>
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingVertical: 10 }}
-            keyboardShouldPersistTaps="handled"
-          >
-            {/* REPLACE THIS CONTENT FOR ANDROID */}
-            <HeaderNavigation title="Edit Journal" color="white" />
-            <View
-              style={{ marginTop: 90, paddingHorizontal: 15, width: "100%" }}
-            >
-              <View className="mt-5 rounded-xl  bg-white">
-                <TextInput
-                  inputMode="text"
-                  className="p-4 text-lg"
-                  returnKeyType="next"
-                  multiline
-                  value={title}
-                  onChangeText={(value) => {
-                    setTitle(value);
-                  }}
-                />
-              </View>
 
-              <View className="mt-5 rounded-xl bg-white">
-                <TextInput
-                  inputMode="text"
-                  className="p-4"
-                  returnKeyType="done"
-                  numberOfLines={8}
-                  textAlignVertical="top"
-                  multiline
-                  value={content}
-                  onChangeText={(value) => {
-                    setContent(value);
-                  }}
-                />
-              </View>
-            </View>
-          </ScrollView>
-        </>
-      )}
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+          <View className="mt-5 rounded-xl  bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4 text-lg"
+              returnKeyType="next"
+              multiline
+              value={title}
+              onChangeText={(value) => {
+                setTitle(value);
+              }}
+            />
+          </View>
+
+          <View className="mt-5 rounded-xl bg-white">
+            <TextInput
+              inputMode="text"
+              className="p-4"
+              returnKeyType="done"
+              numberOfLines={8}
+              textAlignVertical="top"
+              multiline
+              value={content}
+              onChangeText={(value) => {
+                setContent(value);
+              }}
+            />
+          </View>
+        </View>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 }
