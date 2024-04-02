@@ -6,20 +6,25 @@ import {
   StyleSheet,
   TextInput,
   View,
+  findNodeHandle,
 } from "react-native";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { findFocusedRoute } from "@react-navigation/native";
 
 export default function TabOneScreen() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+  const scrollRef = useRef<KeyboardAwareScrollView>(null);
+
   return (
-    <SafeAreaView className="flex-1 w-full h-full bg-green-500 py-5">
+    <SafeAreaView className="flex-1 w-full h-full py-5">
       {Platform.OS === "ios" ? (
-        <KeyboardAvoidingView style={styles.container} behavior="padding">
-          <ScrollView
+          <KeyboardAwareScrollView
+            ref={scrollRef}
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingVertical: 10 }}
+            contentContainerStyle={{ paddingVertical: 50 }}
             keyboardShouldPersistTaps="handled"
           >
             {/* REPLACE THIS CONTENT FOR IOS */}
@@ -62,11 +67,13 @@ export default function TabOneScreen() {
                   multiline
                   value={content}
                   onChangeText={(text) => setContent(text)}
+                  onFocus={(e) => {
+                    scrollRef.current?.scrollToFocusedInput(e.target, 100)
+                  }}
                 />
               </View>
             </View>
-          </ScrollView>
-        </KeyboardAvoidingView>
+          </KeyboardAwareScrollView>
       ) : (
         <ScrollView
           showsVerticalScrollIndicator={false}
