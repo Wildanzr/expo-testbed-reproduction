@@ -27,45 +27,31 @@ export default function TabOneScreen() {
         >
           {/* REPLACE THIS CONTENT FOR IOS */}
           <HeaderNavigation title="Edit Journal" color="white" />
-          <View style={{ marginTop: 16, paddingHorizontal: 15, width: "100%" }}>
-            <View
-              style={{
-                marginTop: 5,
-                borderRadius: 10,
-                backgroundColor: "white",
-                minWidth: "100%",
-              }}
-            >
+          <View style={{ marginTop: 14, paddingHorizontal: 15, width: "100%" }}>
+            <View className="mt-5 rounded-xl  bg-white">
               <TextInput
                 inputMode="text"
-                style={{ padding: 16, fontSize: 18 }}
+                className="p-4 text-lg"
                 returnKeyType="next"
                 multiline
                 value={title}
-                onChangeText={(text) => setTitle(text)}
+                onChangeText={(value) => {
+                  setTitle(value);
+                }}
               />
             </View>
 
-            <View
-              style={{
-                marginTop: 5,
-                borderRadius: 10,
-                backgroundColor: "white",
-                minWidth: "100%",
-                minHeight: "30%", // NOTE FOR IOS
-              }}
-            >
+            <View className="mt-5 rounded-xl bg-white">
               <TextInput
                 inputMode="text"
-                style={{ padding: 16, fontSize: 16 }}
+                className="p-4"
                 returnKeyType="done"
-                numberOfLines={5}
+                numberOfLines={8}
                 textAlignVertical="top"
                 multiline
                 value={content}
-                onChangeText={(text) => setContent(text)}
-                onFocus={(e) => {
-                  scrollRef.current?.scrollToFocusedInput(e.target, 100);
+                onChangeText={(value) => {
+                  setContent(value);
                 }}
               />
             </View>
@@ -73,52 +59,41 @@ export default function TabOneScreen() {
         </KeyboardAwareScrollView>
       ) : (
         <>
-          <HeaderNavigation title="Edit Journal" color="white" />
           <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingVertical: 10 }}
             keyboardShouldPersistTaps="handled"
-            style={{ marginTop: 50 }}
           >
             {/* REPLACE THIS CONTENT FOR ANDROID */}
+            <HeaderNavigation title="Edit Journal" color="white" />
             <View
-              style={{ marginTop: 16, paddingHorizontal: 15, width: "100%" }}
+              style={{ marginTop: 90, paddingHorizontal: 15, width: "100%" }}
             >
-              <View
-                style={{
-                  marginTop: 5,
-                  borderRadius: 10,
-                  backgroundColor: "white",
-                }}
-              >
+              <View className="mt-5 rounded-xl  bg-white">
                 <TextInput
                   inputMode="text"
-                  style={{ padding: 16, fontSize: 18 }}
+                  className="p-4 text-lg"
                   returnKeyType="next"
                   multiline
                   value={title}
-                  onChangeText={(text) => setTitle(text)}
+                  onChangeText={(value) => {
+                    setTitle(value);
+                  }}
                 />
               </View>
 
-              <View
-                style={{
-                  marginTop: 5,
-                  borderRadius: 10,
-                  backgroundColor: "red",
-                  minWidth: "100%",
-                  minHeight: "20%", // NOTE FOR ANDROID
-                }}
-              >
+              <View className="mt-5 rounded-xl bg-white">
                 <TextInput
                   inputMode="text"
-                  style={{ padding: 16, fontSize: 16 }}
+                  className="p-4"
                   returnKeyType="done"
-                  numberOfLines={8} // NOTE FOR ANDROID
+                  numberOfLines={8}
                   textAlignVertical="top"
                   multiline
                   value={content}
-                  onChangeText={(text) => setContent(text)}
+                  onChangeText={(value) => {
+                    setContent(value);
+                  }}
                 />
               </View>
             </View>
