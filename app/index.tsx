@@ -1,16 +1,13 @@
 import {
-  KeyboardAvoidingView,
   Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   TextInput,
   View,
-  findNodeHandle,
 } from "react-native";
 import React, { useRef, useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { findFocusedRoute } from "@react-navigation/native";
 
 export default function TabOneScreen() {
   const [title, setTitle] = useState("");
