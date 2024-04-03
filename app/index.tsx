@@ -1,92 +1,28 @@
 import {
-  Platform,
   SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  TextInput,
   View,
 } from "react-native";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import HeaderNavigation from "@/components/coaching/HeaderNavigation";
-import ButtonMoveScreen from "@/components/coaching/ButtonMoveScreen";
+import { Link } from "expo-router";
 
 export default function TabOneScreen() {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
   const scrollRef = useRef<KeyboardAwareScrollView>(null);
 
   return (
-    <SafeAreaView className="flex-1 w-full h-full py-5 bg-red-500">
+    <SafeAreaView className="flex-1 w-full h-full py-5">
       <KeyboardAwareScrollView
         ref={scrollRef}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingVertical: 50 }}
         keyboardShouldPersistTaps="handled"
       >
-        {/* REPLACE THIS CONTENT FOR IOS */}
-        <HeaderNavigation title="Edit Journal" color="white" />
-        <View
-          style={{
-            marginTop: Platform.select({ ios: 14, android: 30 }),
-            paddingHorizontal: 15,
-            width: "100%",
-          }}
-        >
-          <View className="mt-5 rounded-xl  bg-white">
-            <TextInput
-              inputMode="text"
-              className="p-4 text-lg"
-              returnKeyType="next"
-              multiline
-              value={title}
-              onChangeText={(value) => {
-                setTitle(value);
-              }}
-            />
-          </View>
-
-          <View className="mt-5 rounded-xl bg-white">
-            <TextInput
-              inputMode="text"
-              className="p-4"
-              returnKeyType="done"
-              numberOfLines={8}
-              textAlignVertical="top"
-              multiline
-              value={content}
-              onChangeText={(value) => {
-                setContent(value);
-              }}
-            />
-          </View>
-        </View>
+       <View className="flex-1 flex-col items-center justify-center space-y-5">
+         <Link href="/" className="text-blue-500 font-bold text-xl">HOME</Link>
+         <Link href="/keyboard" className="text-blue-500 font-bold text-xl">KEYBOARD</Link>
+         <Link href="/chat" className="text-blue-500 font-bold text-xl">CHAT</Link>
+       </View>
       </KeyboardAwareScrollView>
-      <ButtonMoveScreen
-        content="Save"
-        onPress={() => {
-          console.log("Save");
-        }}
-      />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "red",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});
