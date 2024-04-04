@@ -1,7 +1,9 @@
+import ArrowUpIconPurple from "@/assets/icons/arrow-up-purple";
 import Colors from "@/constants/Colors";
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useCallback } from "react";
-import { GiftedChat, Bubble, MessageText, type IMessage, BubbleProps } from "react-native-gifted-chat";
+import { View, Text } from "react-native";
+import { GiftedChat, Bubble, MessageText, type IMessage, BubbleProps, SendProps, Send } from "react-native-gifted-chat";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const GiftedChatScreen = (): React.ReactNode => {
@@ -55,6 +57,16 @@ const GiftedChatScreen = (): React.ReactNode => {
     );
   }
 
+  const renderSend = (props: SendProps<IMessage>): React.ReactNode => {
+    return (
+      <Send {...props}>
+        <View className="flex items-center justify-center h-full px-2">
+          <ArrowUpIconPurple />
+        </View>
+      </Send>
+    );
+  }
+
   const onSend = useCallback((messages: IMessage[]) => {
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, messages),
@@ -66,6 +78,7 @@ const GiftedChatScreen = (): React.ReactNode => {
       <StatusBar style="dark" />
       <GiftedChat
         renderBubble={renderBubble}
+        renderSend={renderSend}
         renderAvatar={null}
         messages={messages}
         onSend={(messages) => {
