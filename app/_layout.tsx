@@ -11,6 +11,7 @@ import { useEffect } from "react";
 
 import { useColorScheme } from "@/components/useColorScheme";
 import { StatusBar } from "expo-status-bar";
+import { ChatProvider } from "@/contexts/ChatContext";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -59,6 +60,7 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
+    <ChatProvider>
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
       <Stack>
@@ -67,5 +69,6 @@ function RootLayoutNav() {
         <Stack.Screen name="chat" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
+    </ChatProvider>
   );
 }
