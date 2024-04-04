@@ -1,24 +1,59 @@
-import React, { useState, useCallback, useEffect } from "react";
-import { GiftedChat, type IMessage } from "react-native-gifted-chat";
+import Colors from "@/constants/Colors";
+import { StatusBar } from "expo-status-bar";
+import React, { useState, useCallback } from "react";
+import { GiftedChat, Bubble, MessageText, type IMessage, BubbleProps } from "react-native-gifted-chat";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const GiftedChatScreen = (): React.ReactNode => {
-  const [messages, setMessages] = useState<IMessage[]>([]);
-
-  useEffect(() => {
-    setMessages([
-      {
+  const [messages, setMessages] = useState<IMessage[]>([
+    {
+      _id: 1,
+      text: "Have a great working week!!",
+      createdAt: new Date(),
+      user: {
         _id: 1,
-        text: "Hello there!",
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: "Ana",
-          avatar: "https://placeimg.com/140/140/any",
-        },
+        name: "Ana",
+        avatar: "https://placeimg.com/140/140/any",
       },
-    ]);
-  }, []);
+    },
+    {
+      _id: 2,
+      text: "Great Job!",
+      createdAt: new Date(),
+      user: {
+        _id: 2,
+        name: "User",
+        avatar: "https://placeimg.com/140/140/any",
+      },
+    },
+  ]);
+
+  const renderBubble = (props: BubbleProps<IMessage>): React.ReactNode => {
+    return (
+      <Bubble
+        
+        {...props}
+        wrapperStyle={{
+          right: {
+            backgroundColor: Colors.primary[500],
+          },
+          left: {
+            backgroundColor: Colors.text.accent,
+          },
+        }}
+        textStyle={{
+          right: {
+            color: Colors.text.accent,
+            fontFamily: "PlusJakartaSans-Regular",
+          },
+          left: {
+            color: Colors.text.secondary,
+            fontFamily: "PlusJakartaSans-Regular",
+          },
+        }}
+      />
+    );
+  }
 
   const onSend = useCallback((messages: IMessage[]) => {
     setMessages((previousMessages) =>
@@ -28,14 +63,19 @@ const GiftedChatScreen = (): React.ReactNode => {
 
   return (
     <SafeAreaView className="h-full w-full bg-primary-100">
+      <StatusBar style="dark" />
       <GiftedChat
+        renderBubble={renderBubble}
+        renderAvatar={null}
         messages={messages}
         onSend={(messages) => {
           onSend(messages);
         }}
+        inverted
         user={{
-          _id: 1,
+          _id: 2,
         }}
+        placeholder="Start typing..."
       />
     </SafeAreaView>
   );
