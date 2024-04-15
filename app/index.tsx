@@ -30,6 +30,9 @@ export default function TabOneScreen() {
           <Link href="/chat" className="text-blue-500 font-bold text-xl">
             CHAT
           </Link>
+          <Link href="/login" className="text-blue-500 font-bold text-xl">
+            LOGIN
+          </Link>
         </View>
       </KeyboardAwareScrollView>
     </SafeAreaView>
