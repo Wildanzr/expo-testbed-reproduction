@@ -8,9 +8,9 @@ export default function TabOneScreen() {
   const scrollRef = useRef<KeyboardAwareScrollView>(null);
   const { fetchChats } = useChat();
 
-  useEffect(() => {
-    fetchChats();
-  }, [])
+  // useEffect(() => {
+  //   fetchChats();
+  // }, [])
 
   return (
     <SafeAreaView className="flex-1 w-full h-full py-5">

@@ -16,7 +16,7 @@ export const ChatProvider = ({ children }: { children: React.ReactNode }) => {
     {
       _id: "1",
       text: "Hello",
-      createdAt: new Date(),
+      createdAt: new Date("2024-04-02T00:00:00.000Z"),
       user: {
         _id: 1,
         name: "user",
@@ -28,7 +28,79 @@ export const ChatProvider = ({ children }: { children: React.ReactNode }) => {
     {
       _id: "2",
       text: "Hi",
-      createdAt: new Date(),
+      createdAt: new Date("2024-04-02T00:01:00.000Z"),
+      user: {
+        _id: 2,
+        name: "assistant",
+        avatar: "https://placeimg.com/140/140/any",
+      },
+      role: "assistant",
+      memory: {},
+    },
+    {
+      _id: "3",
+      text: "Hello",
+      createdAt: new Date("2024-04-01T00:00:00.000Z"),
+      user: {
+        _id: 1,
+        name: "user",
+        avatar: "https://placeimg.com/140/140/any",
+      },
+      role: "user",
+      memory: {},
+    },
+    {
+      _id: "4",
+      text: "Hi",
+      createdAt: new Date("2024-04-01T00:01:00.000Z"),
+      user: {
+        _id: 2,
+        name: "assistant",
+        avatar: "https://placeimg.com/140/140/any",
+      },
+      role: "assistant",
+      memory: {},
+    },
+    {
+      _id: "5",
+      text: "Hello",
+      createdAt: new Date("2024-03-31T00:00:00.000Z"),
+      user: {
+        _id: 1,
+        name: "user",
+        avatar: "https://placeimg.com/140/140/any",
+      },
+      role: "user",
+      memory: {},
+    },
+    {
+      _id: "6",
+      text: "Hi",
+      createdAt: new Date("2024-03-31T00:01:00.000Z"),
+      user: {
+        _id: 2,
+        name: "assistant",
+        avatar: "https://placeimg.com/140/140/any",
+      },
+      role: "assistant",
+      memory: {},
+    },
+    {
+      _id: "7",
+      text: "Hello",
+      createdAt: new Date("2024-03-29T00:00:00.000Z"),
+      user: {
+        _id: 1,
+        name: "user",
+        avatar: "https://placeimg.com/140/140/any",
+      },
+      role: "user",
+      memory: {},
+    },
+    {
+      _id: "8",
+      text: "Hi",
+      createdAt: new Date("2024-03-29T00:01:00.000Z"),
       user: {
         _id: 2,
         name: "assistant",
