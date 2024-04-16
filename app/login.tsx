@@ -1,9 +1,10 @@
+import "core-js/stable/atob";
 import { View, Text, Button } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import * as AppleAuthentication from 'expo-apple-authentication';
 import { jwtDecode } from 'jwt-decode';
-import * as SecureStore from 'expo-secure-store';
+import { SocialRegisterData, socialRegister } from "@/services/authServices";
 
 const LoginScreen = () => {
   const [userInfo, setUserInfo] = useState<AppleAuthentication.AppleAuthenticationCredential | null>(null);
@@ -20,6 +21,21 @@ const LoginScreen = () => {
       });
 
       setUserInfo(credential)
+      const { identityToken, fullName, email } = credential;
+      console.log("Credentials :", credential)
+      const decoded = jwtDecode(identityToken as string);
+      console.log("Decoded :", decoded)
+
+      const data: SocialRegisterData = {
+        appId: decoded.sub as string,
+        name: fullName?.givenName as string,
+        provider: "APPLE",
+        email: email as string,
+      };
+
+      console.log(data)
+      const res = await socialRegister(data);
+      console.log(res)
       // signed in
     } catch (e: any) {
       if (e.code === 'ERR_REQUEST_CANCELED') {
@@ -32,9 +48,7 @@ const LoginScreen = () => {
 
   const getContent = (): React.ReactNode => {
     if (userInfo) {
-      console.log(userInfo)
       const decoded = jwtDecode(userInfo.identityToken as string) as any
-      console.log(decoded)
       return (
           <Text>{decoded.sub}</Text>
       )
