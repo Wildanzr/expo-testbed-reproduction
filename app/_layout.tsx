@@ -67,6 +67,7 @@ function RootLayoutNav() {
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="keyboard" options={{ headerShown: false }} />
         <Stack.Screen name="chat" options={{ headerShown: false }} />
+        <Stack.Screen name="voice" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
     </ChatProvider>
