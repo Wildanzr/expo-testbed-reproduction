@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 const BASE_URL = "https://api.ana.tokenminds.co";
 const CHAT_HISTORY_URL = `${BASE_URL}/chat-history`;
 const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWl0YUBwdXJwbGVtaW5kcy5jbyIsInN1YiI6MTQsImlhdCI6MTcxMjIwMDYxNSwiZXhwIjoxNzE0NzkyNjE1fQ.77ew2IM_2iUR6aFwlV-w6gv5Fvdl5z30GVlNCgWEd50";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdyYWl0YUBwdXJwbGVtaW5kcy5jbyIsInN1YiI6MTQsImlhdCI6MTcxNTc0ODI2MiwiZXhwIjoxNzE4MzQwMjYyfQ.QPLky9xGLqiYVZ8DeMhsDEZYX39pzIgEvF2UZr52oTM";
 
 interface BaseResponse {
   responseOk: boolean;
@@ -38,3 +38,36 @@ export const getChatsApiCall = async (page?: number): Promise<BaseResponse> => {
     return { responseOk, responseJSON };
   }
 };
+
+export const getAudioApiCall = async (audio: string) => {
+  try {
+    console.log("Requesting STT..")
+    const formdata = new FormData();
+    // @ts-expect-error
+    formdata.append("audio", {
+      uri: audio,
+      name: "audio.m4a",
+      type: "audio/m4a",
+    });
+
+    const config: AxiosRequestConfig = {
+      url: `${CHAT_HISTORY_URL}/stt`,
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${TOKEN}`,
+      },
+      data: formdata,
+    };
+    
+    const response = await axios.request(config);
+    const responseOk = response.status === 200 || response.status === 201;
+    const responseJSON = response.data;
+    return { responseOk, responseJSON };
+  } catch (error: any) {
+    console.log(error);
+    const responseJSON = error.response.data;
+    const responseOk = false;
+    return { responseOk, responseJSON };
+  }
+}
