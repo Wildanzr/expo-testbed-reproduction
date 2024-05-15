@@ -11,6 +11,7 @@ export default function VoiceScreen() {
   const [audio, setAudio] = useState<string>("");
   const [responseAudio, setResponseAudio] = useState<string>("");
   const [permissionResponse, requestPermission] = Audio.usePermissions();
+  const [loading, setLoading] = useState(false);
 
   const startRecording = async () => {
     try {
@@ -31,6 +32,7 @@ export default function VoiceScreen() {
       });
       const { recording } = await Audio.Recording.createAsync(recordingOptions);
       setRecording(recording);
+      setResponseAudio("");
       console.log("Recording started");
     } catch (err) {
       console.error("Failed to start recording", err);
@@ -58,6 +60,7 @@ export default function VoiceScreen() {
 
   const generateAudio = async () => {
     setResponseAudio("");
+    setLoading(true);
     const { responseJSON, responseOk } = await getAudioApiCall(audio);
 
     if (responseOk) {
@@ -65,6 +68,7 @@ export default function VoiceScreen() {
       const audioUrl = responseJSON.data.content;
       setResponseAudio(audioUrl);
     }
+    setLoading(false);
   };
 
   return (
@@ -99,12 +103,13 @@ export default function VoiceScreen() {
               </Pressable>
 
               <Pressable
+                disabled={loading}
                 style={{ marginHorizontal: 20 }}
                 onPress={generateAudio}
                 className="px-5 py-2 rounded-lg bg-primary-500"
               >
                 <Text className="text-lg text-white font-jakarta-reg">
-                  Generate Audio
+                  {loading ? "Loading.." : "Generate Audio"}
                 </Text>
               </Pressable>
             </View>
