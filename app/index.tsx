@@ -20,15 +20,18 @@ export default function TabOneScreen() {
         contentContainerStyle={{ paddingVertical: 50 }}
         keyboardShouldPersistTaps="handled"
       >
-        <View className="flex-1 flex-col items-center justify-center space-y-5">
-          <Link href="/" className="text-blue-500 font-bold text-xl">
+        <View className="flex-col items-center justify-center flex-1 space-y-5">
+          <Link href="/" className="text-xl font-bold text-blue-500">
             HOME
           </Link>
-          <Link href="/keyboard" className="text-blue-500 font-bold text-xl">
+          <Link href="/keyboard" className="text-xl font-bold text-blue-500">
             KEYBOARD
           </Link>
-          <Link href="/chat" className="text-blue-500 font-bold text-xl">
+          <Link href="/chat" className="text-xl font-bold text-blue-500">
             CHAT
+          </Link>
+          <Link href="/mood" className="text-xl font-bold text-blue-500">
+            MOOD
           </Link>
         </View>
       </KeyboardAwareScrollView>
