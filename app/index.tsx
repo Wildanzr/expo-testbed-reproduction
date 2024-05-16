@@ -1,8 +1,7 @@
-import { SafeAreaView, View } from "react-native";
+import { Button, SafeAreaView, TouchableOpacity, View, Text, Pressable } from "react-native";
 import React, { useRef } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Link } from "expo-router";
-import { useChat } from "@/contexts/ChatContext";
 
 export default function TabOneScreen() {
   const scrollRef = useRef<KeyboardAwareScrollView>(null);
@@ -27,6 +26,14 @@ export default function TabOneScreen() {
           <Link href="/voice" className="text-xl font-bold text-blue-500">
             VOICE
           </Link>
+
+          <Button title="Test Button 1" onPress={() => console.log("Test Button 1")} />
+          <TouchableOpacity onPress={() => console.log("Test Button 2")}>
+            <Text className="text-white">Test Button 2</Text>
+          </TouchableOpacity>
+          <Pressable onPress={() => console.log("Test Button 3")}>
+            <Text className="text-white">Test Button 3</Text>
+          </Pressable>
         </View>
       </KeyboardAwareScrollView>
     </SafeAreaView>
